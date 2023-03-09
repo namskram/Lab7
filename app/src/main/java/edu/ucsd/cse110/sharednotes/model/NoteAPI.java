@@ -82,7 +82,7 @@ public class NoteAPI {
         String encodedMsg = title.replace(" ", "%20");
 
         var request = new Request.Builder()
-                .url("https://sharednotes.goto.ucsd.edu/echo/" + encodedMsg)
+                .url("https://sharednotes.goto.ucsd.edu/notes/" + encodedMsg)
                 .method("GET", null)
                 .build();
 
@@ -107,7 +107,7 @@ public class NoteAPI {
 
         RequestBody body = RequestBody.create(json, JSON);
         var request = new Request.Builder()
-                .url("https://sharednotes.goto.ucsd.edu/echo/" + encodedMsg)
+                .url("https://sharednotes.goto.ucsd.edu/notes/" + encodedMsg)
                 .method("PUT", body)
                 .build();
 

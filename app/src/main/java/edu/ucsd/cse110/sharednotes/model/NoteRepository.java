@@ -114,6 +114,16 @@ public class NoteRepository {
     }
 
     public void upsertRemote(Note note) {
-        NoteAPI.provide().putLocation(note.toJSON(), note.title);
+        Thread upsertRemoteThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    NoteAPI.provide().putLocation(note.toJSON(), note.title);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        upsertRemoteThread.start();
     }
 }
